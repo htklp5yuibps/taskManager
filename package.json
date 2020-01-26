@@ -1,0 +1,27 @@
+{
+  "name": "task-manager-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/server.js",
+    "prod": "node server/server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "express",
+    "node"
+  ],
+  "author": "Vladislav Soldatenkov <v1ktukc9fdbp@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

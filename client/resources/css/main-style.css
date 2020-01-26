@@ -1,0 +1,516 @@
+/* 00. basic layout */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    line-height: normal;
+}
+
+.content {
+    flex-grow: 1;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* 01. header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    min-height: 45px;
+
+    background-color: #3a59a6;
+
+    font: bold 1.5em 'Satisfy', cursive;
+    color: #ffffff;
+}
+
+/* 01.01 userpanel */
+.userpanel {
+    display: flex;
+    flex-direction: column;
+
+    font: bold 0.7em 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.myui-btn.userpanel-signinbtn {
+    background-color: #D8A224;
+}
+
+.myui-btn.userpanel-signinbtn:hover {
+    background-color: #A97F1C;
+}
+
+.myui-btn.userpanel-signinbtn:active {
+    background-color: #806015;
+}
+
+/* 02. content */
+.tasks-content.with-message {
+    display: flex;
+    flex-direction: column;
+}
+
+.tasks-content.with-message .wrapper {
+    display: flex;
+}
+
+.tasks-content.with-message .myui-tip {
+    margin-bottom: 10px;
+}
+
+.tasks-content {
+    display: flex;
+    justify-content: stretch;
+    padding: 0 10px 20px 10px;
+}
+
+.tasks-content .tasks {
+    margin-left: 10px;
+    flex-basis: 0;
+}
+
+.tasks-content .tasks:nth-child(1) {
+    margin-left: 0;
+}
+
+/* signin content layout */
+.signin-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.signin-content .wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 10px 20px;
+
+    width: 400px;
+    height: fit-content;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: #f2f2f2;
+}
+
+.signin-content.with-message {
+    flex-direction: column;
+}
+
+.signin-content.with-message .myui-tip {
+    width: 420px;
+    margin-bottom: 10px;
+}
+
+.signin-content .wrapper input,
+.signin-content .wrapper button {
+    margin-bottom: 10px;
+}
+
+/* taskEditContent content layout */
+.task-edit-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.task-edit-content.with-message {
+    flex-direction: column;
+}
+
+.task-edit-content.with-message .myui-tip {
+    margin-bottom: 10px;
+    width: 420px;
+}
+
+.task-edit-content .wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 10px 20px;
+
+    width: 400px;
+    height: fit-content;
+    background-color: #f2f2f2;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.task-edit-content .wrapper > .form-item {
+    margin-bottom: 10px;
+}
+
+/* 03. footer */
+.footer {
+    padding: 3px;
+
+    background-color: #3a59a6;
+
+    font: bold 1.2em 'Satisfy', cursive;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* 04. menu */
+.menu {
+    display: flex;
+    justify-content: center;
+    padding: 20px 5px;
+
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.menu.empty {
+    padding: 0;
+    margin: 0;
+    min-height: 20px;
+}
+
+/* 05. tasks */
+.tasks {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.tasks.dragover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition-duration: .3s;
+    transition-property: 'background-color';
+}
+
+.title {
+    padding: 10px;
+
+    border-radius: 5px;
+    background-color: #3a59a6;
+
+    font: bold 1.2em 'Roboto Condensed', sans-serif;
+    text-align: center;
+    color: #ffffff;
+}
+
+.task {
+    cursor: grab;
+    margin-top: 20px;
+}
+
+/* 06. task */
+.task {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    
+    border-radius: 5px;
+    background-color: #3a59a6;
+    color: #ffffff;
+    word-break: break-all;
+}
+
+.task.read-only-task {
+    cursor: auto;
+}
+
+.task.bug {
+    background-color: #c93441;
+}
+
+.task.disabled {
+    background-color: #a8a8a8;
+    cursor: auto;
+}
+
+.task-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title .title {
+    background: rgba(0, 0, 0, 0);
+}
+
+.task-menu {
+    align-self: start;
+    position: relative;
+
+    text-align: right;
+    cursor: pointer;
+
+    font-size: 1.2em;
+}
+
+.task-title i[name="remove-btn"] {
+    align-self: start;
+}
+
+.task-menu ul {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 0px;
+    width: max-content;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    background-color: #2e4682;
+    border-radius: 5px;
+
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.task-menu ul.bug {
+    background-color: #b8303c;
+}
+
+.task-menu li {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 3px 20px;
+}
+
+.task-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.task-menu li.separator {
+    padding: 0;
+    height: 2px;
+    margin: 5px 0;
+    background-color: #ffffff;
+}
+
+.task-menu li.separator:hover { 
+    background-color: #ffffff;
+}
+
+.task-menu i {
+    display: block;
+    width: 25px;
+    font-size: .7em;
+}
+
+.task-description {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    word-break: break-all;
+}
+
+.task-tags {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px;
+    margin-top: 10px;
+
+    border-radius: 5px;
+
+    font-size: .9em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.task-creator {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    margin-top: 10px;
+
+    border-radius: 5px;
+
+    font-size: .9em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.task.dragged {
+    background-color: #C7C7C7;
+    transition-duration: .3s;
+    transition-property: 'background-color';
+}
+
+/* 07. controls */
+.myui-btn {
+    display: block;
+    padding: 0 10px;
+    background-color: #3a59a6;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+.myui-btn:hover {
+    background-color: #2e4682;
+    transition-duration: .2s;
+    transition-property: "background-color";
+}
+
+.myui-btn:active {
+    background-color: #1c2b4f;
+}
+
+.myui-searchbar {
+    display: flex;
+    align-items: center;
+}
+
+.myui-searchbar button {
+    margin: 0;
+    padding: 0 5px;
+    height: 40px;
+    border: 0;
+
+    background-color: #3a59a6;
+
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+}
+
+.myui-searchbar button:hover {
+    background-color: #2e4682;
+    transition-duration: .2s;
+    transition-property: "background-color";
+}
+
+.myui-searchbar button:active {
+    background-color: #1c2b4f;
+}
+
+.myui-searchbar input {
+    margin: 0;
+    padding: 4px;
+    height: 40px;
+    font-size: 1.4em;
+    outline: none;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+}
+
+.myui-searchbar input::placeholder {
+    font-size: 0.7em;
+    text-align: center;
+}
+
+input.myui-form-control {
+    display: block;
+    margin: 0;
+    padding: 4px;
+    height: 40px;
+    font-size: 1.4em;
+    outline: none;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+input.myui-form-control::placeholder {
+    font-size: 0.7em;
+    text-align: center;
+}
+
+textarea.myui-form-control {
+    border-radius: 5px;
+    display: block;
+    resize: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+textarea.myui-form-control::placeholder {
+    text-align: center;
+}
+
+select.myui-form-control {
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4px;
+
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: none;
+
+    font-size: 1.4em;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: gray;
+}
+
+select.myui-form-control option {
+    font-size: 0.8em;
+}
+
+.myui-tip {
+    padding: 10px;
+    border-radius: 5px;
+    
+    background-color: #db9200;
+
+    font-size: 1.3em;
+    font-weight: 300;
+    text-align: center;
+    color: #ffffff;
+}
+
+.myui-tip.success {
+    background-color: #00c936;
+}
+
+.myui-tip.error {
+    background-color: #b8303c;
+}
+
+/* 08. helpers */
+.flex {
+    display: flex;
+}
+
+.position-rel {
+    position: relative;
+}
+
+.position-abs {
+    position: absolute;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-left-30 {
+    margin-left: 30px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.display-block {
+    display: block;
+}
+
+.drop-style {
+    padding: 0;
+    margin: 0;
+}
